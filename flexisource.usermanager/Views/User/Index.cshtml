@@ -1,13 +1,33 @@
 ﻿<table class="table table-striped table-bordered table-hover table-responsive"
-       data-toggle="table" data-url="/user/data" data-flat="true" data-search="true"
-       data-pagination="true"
-       id="userTable">
+        data-toggle="table"
+        data-url="/user/data"
+        data-show-refresh="true"
+        data-pagination="true"
+        data-show-toggle="true"
+        data-buttons="buttons">
+
     <thead>
         <tr>
             <th data-field="userId" data-sortable="true">ID</th>
             <th data-field="name" data-sortable="true">Name</th>
             <th data-field="address" data-sortable="true">Address</th>
+            <th>Actions</th>
         </tr>
     </thead>
 </table>
-
+<script>
+    function buttons() {
+        return {
+            btnAdd: {
+                text: 'Add new row',
+                icon: 'fa-plus',
+                event: function () {
+                    alert('Do some stuff to e.g. add a new row')
+                },
+                attributes: {
+                    title: 'Add a new row to the table'
+                }
+            }
+        }
+    }
+</script>
