@@ -12,14 +12,15 @@
     <None Remove="Microsoft.EntityFrameworkCore.Sqlite" />
     <None Remove="Database\" />
     <None Remove="Views\User\" />
+    <None Remove="Faker.Net" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="RandomNameGeneratorLibrary" Version="1.2.2" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.1">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="6.0.1" />
+    <PackageReference Include="Faker.Net" Version="2.0.154" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Database\" />
