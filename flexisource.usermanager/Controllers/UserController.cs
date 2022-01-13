@@ -98,8 +98,9 @@ namespace flexisource.usermanager.Controllers
 				{
 					FirstName = Faker.Name.First(),
 					LastName = Faker.Name.Last(),
-					Address = $"{Faker.Address.StreetAddress()} {Faker.Address.City()} "
-			};
+					DeliveryAddress = $"{Faker.Address.StreetAddress()} {Faker.Address.City()} ",
+					BillingAddress = $"{Faker.Address.StreetAddress()} {Faker.Address.City()} "
+				};
 				users.Add(user);
             }
 			return users;

@@ -10,7 +10,10 @@ namespace flexisource.usermanager.Models
 		public string FirstName { get; set; }
 		[DisplayName("Last Name")]
 		public string LastName { get; set; }
-		public string Address { get; set; }
+		[DisplayName("Delivery Address")]
+		public string DeliveryAddress { get; set; }
+		[DisplayName("Billing Address")]
+		public string BillingAddress { get; set; }
     }
 
 }

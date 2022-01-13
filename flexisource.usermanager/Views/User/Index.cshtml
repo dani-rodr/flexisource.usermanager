@@ -16,7 +16,8 @@
             <th data-field="userId" data-sortable="true">ID</th>
             <th data-field="firstName" data-sortable="true">First Name</th>
             <th data-field="lastName" data-sortable="true">Last Name</th>
-            <th data-field="address" data-sortable="true">Address</th>
+            <th data-field="deliveryAddress" data-sortable="true">Delivery Address</th>
+            <th data-field="billingAddress" data-sortable="true">Billing Address</th>
         </tr>
     </thead>
 </table>
@@ -37,8 +38,14 @@
                         <input asp-for="LastName" class="form-control" required>
                     </div>
                     <div class="form-group mt-3">
-                        <label asp-for="Address">Address</label>
-                        <input asp-for="Address" class="form-control" required>
+                        <label asp-for="DeliveryAddress"></label>
+                        <input asp-for="DeliveryAddress" class="form-control" required id="newDelivery">
+                    </div>
+                    <div class="form-group mt-3">
+                        <label asp-for="BillingAddress"></label>
+                        <input asp-for="BillingAddress" class="form-control" required id="newBilling">
+                        <input type="checkbox" id="newCheckAddress" onclick="copyNewAddress()">
+                        <label for="newCheckAddress">Same as Delivery Address</label>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -72,8 +79,14 @@
                         <input asp-for="LastName" class="form-control" id="textLname" required>
                     </div>
                     <div class="form-group mt-3">
-                        <label asp-for="Address">Address</label>
-                        <input asp-for="Address" class="form-control" id="textAddress" required>
+                        <label asp-for="DeliveryAddress"></label>
+                        <input asp-for="DeliveryAddress" class="form-control" id="textDelivery" required>
+                    </div>
+                    <div class="form-group mt-3">
+                        <label asp-for="BillingAddress"></label>
+                        <input asp-for="BillingAddress" class="form-control" id="textBilling" required>
+                        <input type="checkbox" id="editCheckAddress" onclick="copyEditAddress()">
+                        <label for="editCheckAddress">Same as Delivery Address</label>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -106,18 +119,41 @@
             form.submit();
         }
     }
+    
+    function copyNewAddress() {
+        var ch = $("#newCheckAddress");
+        if (!ch.is(':checked')) {
+            return;
+        }
+        var del = $("#newDelivery").val();
+        $("#newBilling").val(del)
+    }
+
+    function copyEditAddress() {
+        var ch = $("#editCheckAddress");
+        if (!ch.is(':checked')) {
+            return;
+        }
+        var del = $("#textDelivery").val();
+        $("#textBilling").val(del)
+    }
 
     $(function () {
         $('#userTable tbody').on('click', 'tr', function (e) {
             var tds = $(this).find('td');
             var id = tds.eq(0).text();
             var fname = tds.eq(1).text();
+            if (!fname) {
+                return;
+            }
             var lname = tds.eq(2).text();
-            var address = tds.eq(3).text();
+            var delivery = tds.eq(3).text();
+            var billing = tds.eq(4).text();
             $("#textId").val(id);
             $("#textFname").val(fname);
             $("#textLname").val(lname);
-            $("#textAddress").val(address);
+            $("#textDelivery").val(delivery);
+            $("#textBilling").val(billing);
             $("#editModal").modal();
         })
     })
