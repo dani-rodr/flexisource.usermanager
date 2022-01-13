@@ -52,7 +52,7 @@
                 <h4 class="modal-title">Contact Information</h4>
                 <button class="btn btn-delete"></button>
             </div>
-            <form method="post" asp-action="Add">
+            <form method="post" asp-action="Update" id="editForm">
                 <div class="modal-body">
                     <div class="form-group">
                         <label asp-for="UserId"></label>
@@ -69,7 +69,7 @@
                 </div>
                 <div class="modal-footer">
                     <input value="Save" type="submit" class="btn btn-primary mt-3" />
-                    <button type="button" class="btn btn-primary mt-3" data-dismiss="modal">Delete</button>
+                    <button type="button" class="btn btn-primary mt-3" onclick="deleteUser()">Delete</button>
                     <button type="button" class="btn btn-primary mt-3" data-dismiss="modal">Cancel</button>
                 </div>
             </form>
@@ -79,8 +79,7 @@
 </div>
 
 <script>
-    function buttons()
-    {
+    function buttons() {
         return {
             btnAdd: {
                 icon: 'fa-plus',
@@ -88,6 +87,14 @@
                     $('#addModal').modal();
                 }
             }
+        }
+    }
+
+    function deleteUser() {
+        if (confirm("Are you sure you want to delete this User")) {
+            var form = $("#editForm");
+            form.attr("action", "/User/Delete");
+            form.submit();
         }
     }
 

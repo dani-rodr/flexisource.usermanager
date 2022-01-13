@@ -36,7 +36,29 @@ namespace flexisource.usermanager.Controllers
 			return Redirect("/User");
         }
 
-		public IActionResult Generate()
+		[HttpPost]
+		public IActionResult Delete(User user)
+		{
+			using (var db = new DatabaseContext())
+			{
+				db.Users.Remove(user);
+				db.SaveChanges();
+			}
+			return Redirect("/User");
+		}
+
+		[HttpPost]
+        public IActionResult Update(User user)
+        {
+            using (var db = new DatabaseContext())
+            {
+				var dbUser = db.Users.Update(user);
+                db.SaveChanges();
+            }
+            return Redirect("/User");
+        }
+
+        public IActionResult Generate()
 		{
 			int numOfUsers = 5;
 			using (var db = new DatabaseContext())
