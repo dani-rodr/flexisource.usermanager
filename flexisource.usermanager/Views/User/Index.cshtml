@@ -8,6 +8,7 @@
        data-show-toggle="true"
        data-buttons="buttons"
        data-row-attributes="rowAttributes"
+       data-search="true"
        id="userTable">
 
     <thead>
@@ -44,6 +45,38 @@
 
     </div>
 </div>
+<div id="editModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Contact Information</h4>
+                <button class="btn btn-delete"></button>
+            </div>
+            <form method="post" asp-action="Add">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label asp-for="UserId"></label>
+                        <input asp-for="UserId" class="form-control" id="textId" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Name"></label>
+                        <input asp-for="Name" class="form-control" placeholder="Enter Name" id="textName">
+                    </div>
+                    <div class="form-group mt-3">
+                        <label asp-for="Address">Address</label>
+                        <input asp-for="Address" class="form-control" placeholder="Current Address" id="textAddress">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <input value="Save" type="submit" class="btn btn-primary mt-3" />
+                    <button type="button" class="btn btn-primary mt-3" data-dismiss="modal">Delete</button>
+                    <button type="button" class="btn btn-primary mt-3" data-dismiss="modal">Cancel</button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>
 
 <script>
     function buttons()
@@ -61,8 +94,13 @@
     $(function () {
         $('#userTable tbody').on('click', 'tr', function (e) {
             var tds = $(this).find('td');
-            var id = tds.eq(1);
-            console.log(id);
+            var id = tds.eq(0).text();
+            var name = tds.eq(1).text();
+            var address = tds.eq(2).text();
+            $("#textId").val(id);
+            $("#textName").val(name);
+            $("#textAddress").val(address);
+            $("#editModal").modal();
         })
     })
 </script>
