@@ -20,19 +20,32 @@ namespace flexisource.usermanager.Controllers
 			return View();
 		}
 
-		public IActionResult Generate()
+		public IActionResult Data()
         {
+			return Json(GetUsers());
+        }
+
+		public IActionResult Generate()
+		{
 			var numOfUsers = 50;
-			List<User> users;
 			using (var db = new DatabaseContext())
-            {
+			{
 				db.Users.RemoveRange(db.Users);
 				db.Users.AddRange(GenerateRandomUsers(numOfUsers));
 				db.SaveChanges();
+			}
+			return Json(GetUsers());
+		}
+
+		private List<User> GetUsers()
+		{
+			List<User> users;
+			using (var db = new DatabaseContext())
+            {
 				users = db.Users.ToList();
             }
-			return Json(users);
-        }
+			return users;
+		}
 
 		private IEnumerable<User> GenerateRandomUsers(int num)
         {
