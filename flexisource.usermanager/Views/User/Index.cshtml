@@ -7,6 +7,7 @@
        data-pagination="true"
        data-show-toggle="true"
        data-buttons="buttons"
+       data-row-attributes="rowAttributes"
        id="userTable">
 
     <thead>
@@ -14,7 +15,6 @@
             <th data-field="userId" data-sortable="true">ID</th>
             <th data-field="name" data-sortable="true">Name</th>
             <th data-field="address" data-sortable="true">Address</th>
-            <th>Actions</th>
         </tr>
     </thead>
 </table>
@@ -45,14 +45,24 @@
     </div>
 </div>
 
-<script>function buttons() {
+<script>
+    function buttons()
+    {
         return {
             btnAdd: {
-                text: 'Add new row',
                 icon: 'fa-plus',
                 event: function () {
                     $('#addModal').modal();
                 }
             }
         }
-    }</script>
+    }
+
+    $(function () {
+        $('#userTable tbody').on('click', 'tr', function (e) {
+            var tds = $(this).find('td');
+            var id = tds.eq(1);
+            console.log(id);
+        })
+    })
+</script>
