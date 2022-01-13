@@ -11,6 +11,7 @@
     <None Remove="Microsoft.EntityFrameworkCore.Design" />
     <None Remove="Microsoft.EntityFrameworkCore.Sqlite" />
     <None Remove="Database\" />
+    <None Remove="Views\User\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="RandomNameGeneratorLibrary" Version="1.2.2" />
@@ -22,5 +23,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Database\" />
+    <Folder Include="Views\User\" />
   </ItemGroup>
 </Project>

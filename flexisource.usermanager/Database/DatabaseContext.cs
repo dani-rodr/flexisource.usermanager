@@ -1,4 +1,5 @@
 ﻿using System;
+using flexisource.usermanager.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace flexisource.usermanager.Database
@@ -11,13 +12,5 @@ namespace flexisource.usermanager.Database
 			optionsBuilder.UseSqlite("Data Source=database.db");
 		}
 	}
-
-
-	public class User
-    {
-		public int UserId { get; set; }
-		public string Name { get; set; }
-		public string Address { get; set; }
-    }
 }
 
