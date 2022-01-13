@@ -14,7 +14,8 @@
     <thead>
         <tr>
             <th data-field="userId" data-sortable="true">ID</th>
-            <th data-field="name" data-sortable="true">Name</th>
+            <th data-field="firstName" data-sortable="true">First Name</th>
+            <th data-field="lastName" data-sortable="true">Last Name</th>
             <th data-field="address" data-sortable="true">Address</th>
         </tr>
     </thead>
@@ -25,15 +26,19 @@
             <div class="modal-header">
                 <h4 class="modal-title">New Contact Information</h4>
             </div>
-            <form method="post" asp-action="Add">
+            <form method="post" asp-action="Add" required>
                 <div class="modal-body">
                     <div class="form-group">
-                        <label asp-for="Name"></label>
-                        <input asp-for="Name" class="form-control" placeholder="Enter Name">
+                        <label asp-for="FirstName"></label>
+                        <input asp-for="FirstName" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="LastName"></label>
+                        <input asp-for="LastName" class="form-control">
                     </div>
                     <div class="form-group mt-3">
                         <label asp-for="Address">Address</label>
-                        <input asp-for="Address" class="form-control" placeholder="Current Address">
+                        <input asp-for="Address" class="form-control">
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -52,19 +57,23 @@
                 <h4 class="modal-title">Contact Information</h4>
                 <button class="btn btn-delete"></button>
             </div>
-            <form method="post" asp-action="Update" id="editForm">
+            <form method="post" asp-action="Update" id="editForm" required>
                 <div class="modal-body">
                     <div class="form-group">
                         <label asp-for="UserId"></label>
                         <input asp-for="UserId" class="form-control" id="textId" readonly>
                     </div>
                     <div class="form-group">
-                        <label asp-for="Name"></label>
-                        <input asp-for="Name" class="form-control" placeholder="Enter Name" id="textName">
+                        <label asp-for="FirstName"></label>
+                        <input asp-for="FirstName" class="form-control" id="textFname">
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="LastName"></label>
+                        <input asp-for="LastName" class="form-control" id="textLname">
                     </div>
                     <div class="form-group mt-3">
                         <label asp-for="Address">Address</label>
-                        <input asp-for="Address" class="form-control" placeholder="Current Address" id="textAddress">
+                        <input asp-for="Address" class="form-control" id="textAddress">
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -102,10 +111,12 @@
         $('#userTable tbody').on('click', 'tr', function (e) {
             var tds = $(this).find('td');
             var id = tds.eq(0).text();
-            var name = tds.eq(1).text();
-            var address = tds.eq(2).text();
+            var fname = tds.eq(1).text();
+            var lname = tds.eq(2).text();
+            var address = tds.eq(3).text();
             $("#textId").val(id);
-            $("#textName").val(name);
+            $("#textFname").val(fname);
+            $("#textLname").val(lname);
             $("#textAddress").val(address);
             $("#editModal").modal();
         })

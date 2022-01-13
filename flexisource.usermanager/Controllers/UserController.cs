@@ -96,7 +96,8 @@ namespace flexisource.usermanager.Controllers
             {
 				var user = new User
 				{
-					Name = Faker.Name.FullName(),
+					FirstName = Faker.Name.First(),
+					LastName = Faker.Name.Last(),
 					Address = $"{Faker.Address.StreetAddress()} {Faker.Address.City()} "
 			};
 				users.Add(user);
