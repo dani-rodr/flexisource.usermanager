@@ -1,0 +1,47 @@
+Deploying the Web Application to your setup
+    1.Download the Self-Contained App from Release/net6.0/{platform}/publish/ folder
+        -I built the Application for linux-x64, osx-x64, osx.12-arm64 and win-x64
+    2.Manually copy the database file for the database/ folder inside publish folder
+    3.Run the command "dotnet flexisource.usermanager.dll"
+    4.The Web App should run on http://localhost:5000/
+
+To build the App manually, see the configurations below for details.
+    1.Download the repository
+    2.Go to the project folder, flexisource.usermanager/flexisource.usermanager/
+    3.Run the command "dotnet tool install --global dotnet-ef" to install the Entity Framework Core Tools
+    4.Run the command "dotnet ef database update" to run the database migration process
+    5.You can build and run the project in Visual Studio or run the command "dotnet run"
+
+
+This app was developed using these setup:
+
+Visual Studio Community 2022 for Mac Preview
+Version 17.0 Preview (17.0 build 5186)
+Installation UUID: 0a4cb8c0-779e-409e-ab09-d7d4b5d5a2d2
+	GTK+ 2.24.23
+
+Mono Framework MDK
+Runtime:
+	Mono 6.12.0 (2020-02/5ce143a1a88) (64-bit)
+	Package version: 612000158
+
+Roslyn (Language Service)
+4.1.0-1.21511.14+c09d760509f00afadf0fa9b6ee7d0c53b70943ca
+
+NuGet
+Version: 6.0.0.262
+
+.NET SDK (Arm64)
+SDK: /usr/local/share/dotnet/sdk/6.0.101/Sdks
+SDK Version: 6.0.101
+MSBuild SDKs: /Applications/Visual Studio (Preview).app/Contents/MonoBundle/MSBuild/Current/bin/Sdks
+
+.NET Core Runtime
+Runtime: /usr/local/share/dotnet/dotnet
+Runtime Version: 6.0.1
+Operating System
+
+Mac OS X 12.1.0
+Darwin 21.2.0 Darwin Kernel Version 21.2.0
+    Sun Nov 28 20:29:10 PST 2021
+    root:xnu-8019.61.5~1/RELEASE_ARM64_T8101 x86_64
