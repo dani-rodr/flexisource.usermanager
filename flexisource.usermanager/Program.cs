@@ -19,6 +19,9 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=User}/{action=Index}/{id?}");
+app.MapControllerRoute(
+    name: "Generate",
+    pattern: "{controller=User}/{action=Generate}/{numOfUsers}");
 
 app.Run();
 

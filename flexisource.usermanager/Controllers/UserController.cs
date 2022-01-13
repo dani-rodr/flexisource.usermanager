@@ -25,16 +25,36 @@ namespace flexisource.usermanager.Controllers
 			return Json(GetUsers());
         }
 
+		[HttpPost]
+		public IActionResult Add(User user)
+        {
+			using (var db = new DatabaseContext())
+            {
+				db.Users.Add(user);
+				db.SaveChanges();
+            }
+			return Redirect("/User");
+        }
+
 		public IActionResult Generate()
 		{
-			var numOfUsers = 50;
+			int numOfUsers = 5;
 			using (var db = new DatabaseContext())
 			{
-				db.Users.RemoveRange(db.Users);
 				db.Users.AddRange(GenerateRandomUsers(numOfUsers));
 				db.SaveChanges();
 			}
-			return Json(GetUsers());
+			return Redirect("/User");
+		}
+
+		public IActionResult Clear()
+        {
+			using (var db = new DatabaseContext())
+			{
+				db.Users.RemoveRange(db.Users);
+				db.SaveChanges();
+			}
+			return Redirect("/User");
 		}
 
 		private List<User> GetUsers()
