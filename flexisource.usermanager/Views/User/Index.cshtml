@@ -1,10 +1,11 @@
 ﻿<table class="table table-striped table-bordered table-hover table-responsive"
-        data-toggle="table"
-        data-url="/user/data"
-        data-show-refresh="true"
-        data-pagination="true"
-        data-show-toggle="true"
-        data-buttons="buttons">
+       data-toggle="table"
+       data-url="/user/data"
+       data-show-refresh="true"
+       data-pagination="true"
+       data-show-toggle="true"
+       data-buttons="buttons"
+       id="userTable">
 
     <thead>
         <tr>
@@ -15,6 +16,52 @@
         </tr>
     </thead>
 </table>
+
+<div class="modal" id="addUserModal" role="dialog">
+    <div class="modal-dialog">
+        <form>
+            <div class="form-group">
+                <label for="name">Full Name:</label>
+                <input type="text" class="form-control" id="name" placeholder="Enter Name">
+            </div>
+            <div class="form-group">
+                <label for="address">Address:</label>
+                <input type="text" class="form-control" id="address" placeholder="Current Address">
+            </div>
+            <button type="submit" class="btn btn-primary mt-3">Submit</button>
+        </form>
+    </div>
+</div>
+
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">New Contact Information</h4>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" class="form-control" id="name" placeholder="Enter Name">
+                    </div>
+                    <div class="form-group mt-3">
+                        <label for="address">Address</label>
+                        <input type="text" class="form-control" id="address" placeholder="Current Address">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary mt-3">Submit</button>
+                <button type="button" class="btn btn-primary mt-3" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
 <script>
     function buttons() {
         return {
@@ -22,10 +69,7 @@
                 text: 'Add new row',
                 icon: 'fa-plus',
                 event: function () {
-                    alert('Do some stuff to e.g. add a new row')
-                },
-                attributes: {
-                    title: 'Add a new row to the table'
+                    $('#myModal').modal();
                 }
             }
         }
