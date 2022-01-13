@@ -5,6 +5,10 @@ Deploying the Web Application to your setup
     3.Run the command "dotnet flexisource.usermanager.dll"
     4.The Web App should run on http://localhost:5000/
 
+I added some endpoints to clear the database or add some random database
+    http://localhost:5000/User/Generate to create some random database
+    http://localhost:5000/User/Clear to clear the Users table
+
 To build the App manually, see the configurations below for details.
     1.Download the repository
     2.Go to the project folder, flexisource.usermanager/flexisource.usermanager/
